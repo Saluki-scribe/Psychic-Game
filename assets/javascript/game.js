@@ -1,14 +1,16 @@
+
 var win = 0, lose = 0, guesses = 9;
 
-document.onKeyUp = function(event){
-    alert("I picked up your key.");
+document.onkeyup = function(event) {
+    
     var userChoice = event.key;
     var compChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    var compGuess = compChoice[Math.floor(Math.random * compChoice.length)]; 
 
-    console.log("Computer's choice: " + compChoice + " User's choice: " + userChoice);
+    var compGuess = compChoice[Math.floor(Math.random() * compChoice.length)]; 
 
-    if(userChoice == compChoice){
+    console.log("Computer's choice: " + compGuess + " " + " User's choice: " + userChoice);
+
+    if(userChoice == compGuess){
 
         win++;
         document.getElementById("winMessage").innerText = "Your psychic energy is strong... You win!";
