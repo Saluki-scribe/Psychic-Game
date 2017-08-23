@@ -1,8 +1,20 @@
 h1 {
     color: purple;
+    text-decoration: underline;
     font-size: 32px;
 }
 
-.hide {
-    display: none;
+h2 {
+    color: purple;
+    font-size: 24px;
+}
+
+#game-container {
+    text-align: center;
+    background-color: plum;
+    height: 250px;
+    width: 500px;
+    border: 10px dashed purple;
+    padding: 20px;
+    margin: auto;
 }

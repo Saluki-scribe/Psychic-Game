@@ -21,17 +21,19 @@ currentCompGuess.splice(0, 1, compGuess);
     if(userChoice == currentCompGuess){
 
         win++;
-        document.getElementById("message").innerHTML = "<h1>Your psychic energy is strong... You win!</h1>";
+        document.getElementById("message").innerHTML = "<h2>Your psychic energy is strong... You win!</h2>";
         document.getElementById("win").innerText = "Wins: " + win;
         var i = userChoice;
         soFar.push(i);
-        document.getElementById("so-far").innerText = "Your Guesses so far: " + soFar;
         guesses = 9;
+        soFar = [];
+        document.getElementById("so-far").innerText = "Your Guesses so far: " + soFar;        
+        document.getElementById("remaining").innerText = "Guesses Left: " + guesses;
 
 //If user chooses wrong, but doesn't lose
 
     } else if(userChoice != currentCompGuess && compChoice.indexOf(userChoice) > -1 && 0 < guesses) {
-        
+        document.getElementById("message").innerText = " ";
         guesses--;
         document.getElementById("remaining").innerText = "Guesses Left: " + guesses;
         console.log("Guesses after decrement: " + guesses);
@@ -39,26 +41,18 @@ currentCompGuess.splice(0, 1, compGuess);
         soFar.push(" " + i + " ");
         document.getElementById("so-far").innerText = "Your Guesses so far: " + soFar;        
 
-//If user loses 
 
-    } /*else if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1 && 0 == guesses){
-        lose++;
-        document.getElementById("loseMessage").innerText = "You... could use some psychic training. You lose.";
-        document.getElementById("lose").innerText = "Losses: " + lose;
-        document.getElementById("so-far").innerText = "Your Guesses so far: " + userChoice;
-        guesses = 9;
-        soFar = [];
-    
-//If user chooses key that isn't a letter
-
-    }*/ else {
+    }  else {
+    //If user chooses key that isn't a letter
         
-        document.getElementById("message").innerHTML = "<h1>I foresaw that you'd do something crazy like this. Please type a letter.</h1>"; 
+        document.getElementById("message").innerHTML = "<h2>I foresaw that you'd do something crazy like this. Please type a letter.</h2>"; 
     }
+
+    //If user loses 
 
      if(userChoice != currentCompGuess && compChoice.indexOf(userChoice) > -1 && 0 == guesses){
         lose++;
-        document.getElementById("message").innerHTML = "<h1>You... could use some psychic training. You lose.</h1>";
+        document.getElementById("message").innerHTML = "<h2>You... could use some psychic training. You lose.</h2>";
         document.getElementById("lose").innerText = "Losses: " + lose;
         //document.getElementById("so-far").innerText = "Your Guesses so far: " + userChoice;
         guesses = 9;
@@ -68,38 +62,6 @@ currentCompGuess.splice(0, 1, compGuess);
     }
 
 } //End major function
-
-
-
-
-
-/*
-
-Changes to Make
-
-1. compGuess should only run once per 9 user gesses, not every time the user guesses
-2. Reset guesses to 9 once they hit 0
-3. 
-
-Messages
-<h1 id="winMessage"></h1>
-<h1 id="otherMessage"></h1>
-
-*/
-
-
-/*
-Enter your name: <input type="text" id="fname" onkeyup="myFunction()">
-
-<script>
-function myFunction() {
-    var x = document.getElementById("fname").value;
-    document.getElementById("demo").innerHTML = x;
-}
-</script>
-
-*/
-
 
 
 
