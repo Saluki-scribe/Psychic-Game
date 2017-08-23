@@ -1,13 +1,22 @@
 
-var win = 0, lose = 0, guesses = 9, soFar = []; 
+var win = 0, lose = 0, guesses = 9, soFar = [], currentCompGuess = [];
+
 
 document.onkeyup = function psychicGame (event) {
     var userChoice = event.key;
     var compChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    var compGuess = compChoice[Math.floor(Math.random() * compChoice.length)]; 
-    
-    console.log("Computer's choice: " + compGuess + " " + " User's choice: " + userChoice);
+
+//Calculate compGuess      
+
+if(guesses == 9){
+var compGuess = compChoice[Math.floor(Math.random() * compChoice.length)]; 
+currentCompGuess.splice(0, 1, compGuess);
+}
+
+    console.log("Computer's choice: " + currentCompGuess + " " + " User's choice: " + userChoice);
     console.log("Index of: " + compChoice.indexOf(userChoice));
+
+
 
 //If user wins
 
@@ -67,6 +76,14 @@ document.onkeyup = function psychicGame (event) {
 
 //document.onkeyup = location.reload(false);
 
+/*
+
+Changes to Make
+
+1. Compguess should only run once per 9 user gesses, not every time the user guesses
+2.  
+
+*/
 
 
 /*
