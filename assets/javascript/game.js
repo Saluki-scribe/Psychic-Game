@@ -9,6 +9,8 @@ document.onkeyup = function psychicGame (event) {
     console.log("Computer's choice: " + compGuess + " " + " User's choice: " + userChoice);
     console.log("Index of: " + compChoice.indexOf(userChoice));
 
+//If user wins
+
     if(userChoice == compGuess){
 
         win++;
@@ -17,7 +19,9 @@ document.onkeyup = function psychicGame (event) {
         var i = userChoice;
         soFar.push(i);
         document.getElementById("so-far").innerText = "Your Guesses so far: " + soFar;
-        guesses = 9;        
+        guesses = 9;
+
+//If user chooses wrong, but doesn't lose
 
     } else if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1 && 0 < guesses) {
         
@@ -25,24 +29,27 @@ document.onkeyup = function psychicGame (event) {
         document.getElementById("remaining").innerText = "Guesses Left: " + guesses;
         console.log("Guesses after decrement: " + guesses);
         var i = userChoice;
-        soFar.push(i);
+        soFar.push(" " + i + " ");
         document.getElementById("so-far").innerText = "Your Guesses so far: " + soFar;        
+
+//If user loses 
 
     } else if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1 && 0 == guesses){
         lose++;
-        document.getElementById("loseMessage").innerText = "You... could use some psychic training. You lose";
+        document.getElementById("loseMessage").innerText = "You... could use some psychic training. You lose.";
         document.getElementById("lose").innerText = "Losses: " + lose;
         document.getElementById("so-far").innerText = "Your Guesses so far: " + userChoice;
         guesses = 9;
-        
+        soFar = [];
+    
+//If user chooses key that isn't a letter
+
     } else {
         document.getElementById("otherMessage").innerText = "I foresaw that you'd do something crazy like this. Please type a letter."; 
     }
 
-
 } //End major function
 
-    
 
 
 
