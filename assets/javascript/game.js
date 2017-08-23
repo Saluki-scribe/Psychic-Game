@@ -6,7 +6,7 @@ document.onkeyup = function psychicGame (event) {
     var userChoice = event.key;
     var compChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-//Calculate compGuess      
+//Calculate currentCompGuess      
 
 if(guesses == 9){
 var compGuess = compChoice[Math.floor(Math.random() * compChoice.length)]; 
@@ -16,14 +16,12 @@ currentCompGuess.splice(0, 1, compGuess);
     console.log("Computer's choice: " + currentCompGuess + " " + " User's choice: " + userChoice);
     console.log("Index of: " + compChoice.indexOf(userChoice));
 
-
-
 //If user wins
 
-    if(userChoice == compGuess){
+    if(userChoice == currentCompGuess){
 
         win++;
-        document.getElementById("winMessage").innerText = "Your psychic energy is strong... You win!";
+        document.getElementById("message").innerHTML = "<h1>Your psychic energy is strong... You win!</h1>";
         document.getElementById("win").innerText = "Wins: " + win;
         var i = userChoice;
         soFar.push(i);
@@ -32,7 +30,7 @@ currentCompGuess.splice(0, 1, compGuess);
 
 //If user chooses wrong, but doesn't lose
 
-    } else if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1 && 0 < guesses) {
+    } else if(userChoice != currentCompGuess && compChoice.indexOf(userChoice) > -1 && 0 < guesses) {
         
         guesses--;
         document.getElementById("remaining").innerText = "Guesses Left: " + guesses;
@@ -54,19 +52,19 @@ currentCompGuess.splice(0, 1, compGuess);
 //If user chooses key that isn't a letter
 
     }*/ else {
-        document.getElementById("otherMessage").innerText = "I foresaw that you'd do something crazy like this. Please type a letter."; 
+        
+        document.getElementById("message").innerHTML = "<h1>I foresaw that you'd do something crazy like this. Please type a letter.</h1>"; 
     }
 
-     if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1 && 0 == guesses){
+     if(userChoice != currentCompGuess && compChoice.indexOf(userChoice) > -1 && 0 == guesses){
         lose++;
-        document.getElementById("loseMessage").innerText = "You... could use some psychic training. You lose.";
+        document.getElementById("message").innerHTML = "<h1>You... could use some psychic traning. You lose.</h1>";
         document.getElementById("lose").innerText = "Losses: " + lose;
-        document.getElementById("so-far").innerText = "Your Guesses so far: " + userChoice;
+        //document.getElementById("so-far").innerText = "Your Guesses so far: " + userChoice;
         guesses = 9;
         soFar = [];
-        document.getElementById("so-far").innerText = "Your Guesses so far: " + userChoice;
+        document.getElementById("remaining").innerText = "Guesses left: " + guesses;
         
-    
     }
 
 } //End major function
@@ -74,14 +72,18 @@ currentCompGuess.splice(0, 1, compGuess);
 
 
 
-//document.onkeyup = location.reload(false);
 
 /*
 
 Changes to Make
 
-1. Compguess should only run once per 9 user gesses, not every time the user guesses
-2.  
+1. compGuess should only run once per 9 user gesses, not every time the user guesses
+2. Reset guesses to 9 once they hit 0
+3. 
+
+Messages
+<h1 id="winMessage"></h1>
+<h1 id="otherMessage"></h1>
 
 */
 
