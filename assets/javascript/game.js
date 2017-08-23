@@ -34,7 +34,7 @@ document.onkeyup = function psychicGame (event) {
 
 //If user loses 
 
-    } else if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1 && 0 == guesses){
+    } /*else if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1 && 0 == guesses){
         lose++;
         document.getElementById("loseMessage").innerText = "You... could use some psychic training. You lose.";
         document.getElementById("lose").innerText = "Losses: " + lose;
@@ -44,8 +44,20 @@ document.onkeyup = function psychicGame (event) {
     
 //If user chooses key that isn't a letter
 
-    } else {
+    }*/ else {
         document.getElementById("otherMessage").innerText = "I foresaw that you'd do something crazy like this. Please type a letter."; 
+    }
+
+     if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1 && 0 == guesses){
+        lose++;
+        document.getElementById("loseMessage").innerText = "You... could use some psychic training. You lose.";
+        document.getElementById("lose").innerText = "Losses: " + lose;
+        document.getElementById("so-far").innerText = "Your Guesses so far: " + userChoice;
+        guesses = 9;
+        soFar = [];
+        document.getElementById("so-far").innerText = "Your Guesses so far: " + userChoice;
+        
+    
     }
 
 } //End major function
