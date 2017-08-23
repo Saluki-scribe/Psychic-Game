@@ -1,44 +1,66 @@
 
-var win = 0, lose = 0, guesses = 9;
+var win = 0, lose = 0, guesses = 9, soFar = []; 
 
-document.onkeyup = function(event) {
-    
+document.onkeyup = function psychicGame (event) {
     var userChoice = event.key;
     var compChoice = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
     var compGuess = compChoice[Math.floor(Math.random() * compChoice.length)]; 
-
+    
     console.log("Computer's choice: " + compGuess + " " + " User's choice: " + userChoice);
+    console.log("Index of: " + compChoice.indexOf(userChoice));
 
     if(userChoice == compGuess){
 
         win++;
         document.getElementById("winMessage").innerText = "Your psychic energy is strong... You win!";
         document.getElementById("win").innerText = "Wins: " + win;
+        var i = userChoice;
+        soFar.push(i);
+        document.getElementById("so-far").innerText = "Your Guesses so far: " + soFar;
+        guesses = 9;        
 
-    } else if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1){
-
+    } else if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1 && 0 < guesses) {
+        
         guesses--;
         document.getElementById("remaining").innerText = "Guesses Left: " + guesses;
+        console.log("Guesses after decrement: " + guesses);
+        var i = userChoice;
+        soFar.push(i);
+        document.getElementById("so-far").innerText = "Your Guesses so far: " + soFar;        
 
     } else if(userChoice != compGuess && compChoice.indexOf(userChoice) > -1 && 0 == guesses){
         lose++;
         document.getElementById("loseMessage").innerText = "You... could use some psychic training. You lose";
         document.getElementById("lose").innerText = "Losses: " + lose;
-    } else{
-        document.getElementById("otherMessage").innerText = "I foresaw that you'd do something crazy like this. Please type a letter."    
+        document.getElementById("so-far").innerText = "Your Guesses so far: " + userChoice;
+        guesses = 9;
+        
+    } else {
+        document.getElementById("otherMessage").innerText = "I foresaw that you'd do something crazy like this. Please type a letter."; 
     }
 
 
 } //End major function
 
+    
 
 
 
+//document.onkeyup = location.reload(false);
 
 
 
+/*
+Enter your name: <input type="text" id="fname" onkeyup="myFunction()">
 
+<script>
+function myFunction() {
+    var x = document.getElementById("fname").value;
+    document.getElementById("demo").innerHTML = x;
+}
+</script>
+
+*/
 
 
 
