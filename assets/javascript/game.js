@@ -58,7 +58,7 @@ currentCompGuess.splice(0, 1, compGuess);
 
      if(userChoice != currentCompGuess && compChoice.indexOf(userChoice) > -1 && 0 == guesses){
         lose++;
-        document.getElementById("message").innerHTML = "<h1>You... could use some psychic traning. You lose.</h1>";
+        document.getElementById("message").innerHTML = "<h1>You... could use some psychic training. You lose.</h1>";
         document.getElementById("lose").innerText = "Losses: " + lose;
         //document.getElementById("so-far").innerText = "Your Guesses so far: " + userChoice;
         guesses = 9;
